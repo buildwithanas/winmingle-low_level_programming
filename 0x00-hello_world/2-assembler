@@ -1,0 +1,6 @@
+#!/bin/bash
+# This script generates the assembly code of a C code and saves it in an output file
+
+filename=$(basename "$CFILE" .c)
+gcc -S "$CFILE" -o "${filename}.s"
+

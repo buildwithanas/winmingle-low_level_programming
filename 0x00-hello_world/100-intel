@@ -1,0 +1,4 @@
+#!/bin/bash
+# This script generates the assembly code (Intel syntax) of a C code
+
+gcc -S -masm=intel "$CFILE"

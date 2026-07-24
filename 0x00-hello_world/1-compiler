@@ -1,0 +1,4 @@
+#!/bin/bash
+# This script compiles a C file but does not link
+
+gcc -c "$CFILE"
