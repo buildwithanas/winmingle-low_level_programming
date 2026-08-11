@@ -1,0 +1,6 @@
+# Creating a Mkefile
+# name of executable: school
+# rules: all
+# variable: none
+all:
+	gcc main.c -o school
