@@ -1,0 +1,36 @@
+# Compiler
+CC = gcc
+
+# Source files (specify manually)
+SRC = main.c utils.c helper.c
+
+# Object files (automatically derived from SRC)
+OBJ = $(SRC:.c=.o)
+
+# Executable name
+NAME = school
+
+# Rule to build the executable
+all: $(NAME)
+
+# Link object files to create the executable
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+# Compile .c files to .o files
+%.o: %.c
+	$(CC) -c $< -o $@
+
+# Clean up object files and executable
+clean:
+	rm -f $(OBJ) $(NAME)
+
+# Rebuild everything from scratch
+fclean: clean
+	rm -f $(NAME)
+
+# Recompile and rebuild
+re: fclean all
+
+# Phony targets (not actual files)
+.PHONY: all clean fclean re
