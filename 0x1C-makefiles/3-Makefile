@@ -1,0 +1,48 @@
+# Variables
+CC = gcc
+RM = rm -f
+NAME = school
+
+# Source files
+SRC = main.c \
+      file1.c \
+      file2.c \
+      # Add all your .c files here
+
+# Object files (automatically generated from SRC)
+OBJ = $(SRC:.c=.o)
+
+# Compilation flags (optional but recommended)
+CFLAGS = -Wall -Wextra -Werror
+
+# Rules
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+
+# Compile .c files into .o files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean: deletes Emacs and Vim temporary files along with the executable
+clean:
+	$(RM) $(NAME)
+	$(RM) *~ 
+	$(RM) \#*#
+	$(RM) .*~
+	$(RM) *.swp
+	$(RM) *.swo
+
+# Oclean: deletes the object files
+oclean:
+	$(RM) $(OBJ)
+
+# Fclean: deletes all temporary files, executable, and object files
+fclean: clean oclean
+
+# Re: forces recompilation of all source files
+re: fclean all
+
+# Phony targets (targets that are not actual files)
+.PHONY: all clean oclean fclean re
